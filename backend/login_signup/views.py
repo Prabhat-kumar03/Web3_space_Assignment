@@ -13,7 +13,7 @@ class SignUpUser(APIView):
 
     def post(self, request):
         # Extract user data from the request
-        username = request.data.get('username')
+        username = request.data.get('name')
         password = request.data.get('password')
         email = request.data.get('email')
 
@@ -23,12 +23,12 @@ class SignUpUser(APIView):
         user = User.objects.create_user(username=username, email=email, password=password)
         # Generate JWT token for this user
         refresh = RefreshToken.for_user(user)
-
+        print("request recieved")
         return Response({
             "message": "User created successfully",
             "user": {
                 "id": user.id,
-                "username": user.username,
+                "name": user.username,
                 "email": user.email,
             },
             "tokens": {

@@ -5,8 +5,8 @@ from .views import (
 from django.urls import path
 
 urlpatterns = [
-     path('signup/', SignUpUser.as_view(), name='signup'),
-     path('login/', LoginUser.as_view(), name='login'),
+     path('signup', SignUpUser.as_view(), name='signup'),
+     path('login', LoginUser.as_view(), name='login'),
 
     # Mapping APIs
     
